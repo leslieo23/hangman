@@ -174,7 +174,7 @@ button{
     }
 }
 @media(max-width:980px){
-  #alphabet{padding:0 0 10px;}
+  #alphabet{padding:0 0 5px;}
 }
 @media (max-width: 767px) {
   #alphabet {

@@ -1,7 +1,7 @@
 <!Doctype Html>
 <html>
 <head>
-	<link rel ="stylesheet" type="text/css" href="/Users/Leslie/week-3-game/Hangman/hangman.css">
+	<link rel ="stylesheet" type="text/css" href="/Users/Leslie/hangman/Hangman/assets/hangman.css">
 	<link href='https://fonts.googleapis.com/css?family=Fauna+One' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Righteous|Arvo' rel='stylesheet' type='text/css'>
@@ -9,7 +9,7 @@
 <body>
 <div class="wrapper">
     <h1>Breakfast Hangman Game!</h1>
-    <p>Use letters below to figure out the word.  If you get stuck, click on hint! <br>Good luck!</p><img src="/Users/Leslie/week-3-game/Hangman/breakfastfood.jpg">
+    <p>Use letters below to figure out the word.  If you get stuck, click on hint! <br>Good luck!</p><img src="/Users/Leslie/hangman/Hangman/assets/images/breakfastfood.jpg">
 </div>
 <div class="wrapper">
     <div id="buttons">
@@ -21,7 +21,7 @@
     <p id="clue">Clue -</p>  
      <div class="container">
       <button id="hint">Hint</button>
-      <button id="reset">Play again</button>
+      <button type="button"id="reset">Play again</button>
     </div>
 </div>
 <script type="text/javascript" >
@@ -87,7 +87,7 @@
       guess.setAttribute('class', 'guess');
       if (word[i] === "-") {
         guess.innerHTML = "-";
-        space = 1;
+        space += 1;
       } else {
         guess.innerHTML = "_";
       }
@@ -99,7 +99,7 @@
   }
 
 
-   comments = function () {
+   var comments = function () {
     showLives.innerHTML = "You have " + lives + " lives";
     if (lives < 1) {
       showLives.innerHTML = "Game Over, You Lose!";
@@ -113,7 +113,7 @@
  
 
 
-   check = function () {
+   var check = function () {
     list.onclick = function () {
       var geuss = (this.innerHTML);
       this.setAttribute("class", "active");
@@ -139,7 +139,7 @@
   // Play
   play = function () {
     categories = [
-        ["bacon", "sausage", "ham", "hashbrowns", "pancakes", "waffles", "crepes","omelettes","poached","scrambled"]
+        ["bacon", "sausage", "ham", "hashbrowns", "pancakes", "waffles", "crepes","omelettes","poached","scrambled","muffins","scones","toast"]
   ];
 
     chosenCategory = categories[Math.floor(Math.random() * categories.length)];
@@ -156,6 +156,7 @@
     comments();
     selectCat();
 
+
   };
 
   play();
@@ -165,7 +166,7 @@
     hint.onclick = function() {
 
       hints= [
-        ["breakfast meat", "breakfast meat", "breakfast meat", "breakfast potato", "popular breakfast item", "popular breakfast item", "egg-based pancake","how do you like your eggs?","how do you like your eggs?","How do you like your eggs?"]
+        ["breakfast meat", "breakfast meat", "breakfast meat", "breakfast potato", "popular breakfast item", "popular breakfast item", "egg-based pancake","how do you like your eggs?","how do you like your eggs?","How do you like your eggs?","can be eaten by itself or with butter","british breakfast item","you dip your eggs with this"]
    
     ];
 
@@ -174,14 +175,11 @@
     showClue.innerHTML ="Clue: - " +  hints [categoryIndex][hintIndex];
   };
 
+document.reset('reset').onclick = function() {
    
-
-  document.getElementById('reset').onclick = function() {
-    correct.parentNode.removeChild(correct);
-    letters.parentNode.removeChild(letters);
-    showClue.innerHTML = "";
-    context.clearRect(0, 0, 400, 400);
-    play();
+  
+  
+ 
   }
 }
 
