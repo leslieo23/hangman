@@ -1,0 +1,1 @@
+<?php include_once("/Users/Leslie/hangman/Hangman/hangman2.html");?>
