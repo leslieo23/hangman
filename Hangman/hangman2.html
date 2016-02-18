@@ -31,15 +31,15 @@
         'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
         't', 'u', 'v', 'w', 'x', 'y', 'z'];
   
-  var categories;         // Array of topics
-  var chosenCategory;     // Selected catagory
-  var getHint ;          // Word getHint
-  var word ;              // Selected word
-  var guess ;             // Geuss
-  var geusses = [ ];      // Stored geusses
-  var lives ;             // Lives
-  var counter ;           // Count correct geusses
-  var space;              // Number of spaces in word '-'
+  var categories;         
+  var chosenCategory;   
+  var getHint ;         
+  var word ;              
+  var guess ;             
+  var geusses = [ ];      
+  var lives ;             
+  var counter ;           
+  var space;              
   var wins =[];
   var losses =[];
 
@@ -69,14 +69,14 @@
   }
     
   
-  // Select Catagory
+ 
   var selectCat = function () {
     if (chosenCategory === categories[0]) {
       catagoryName.innerHTML = "Category:Breakfast Foods!";
     } 
   }
 
-  // Create geusses ul
+
    result = function () {
     wordHolder = document.getElementById('hold');
     correct = document.createElement('ul');
@@ -135,8 +135,7 @@
     }
   }
   
-    
-  // Play
+
   play = function () {
     categories = [
         ["bacon", "sausage", "ham", "hashbrowns", "pancakes", "waffles", "crepes","omelettes","poached","scrambled","muffins","scones","toast"]
@@ -161,7 +160,7 @@
 
   play();
   
-  // Hint
+
 
     hint.onclick = function() {
 
