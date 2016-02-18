@@ -3,8 +3,9 @@
   font-family: "Raleway";
   text-align: center;
 background-color:#2BABFF;}
-body{ color:blue;
+h1{ color:blue;
 }
+h3{color:black;}
 #word {
     width: auto;
     height: auto;
