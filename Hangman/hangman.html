@@ -1,0 +1,125 @@
+<!Doctype Html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/Users/Leslie/RCB_CLASSWORK/example.css">
+<body>
+<h1>Breakfast Hangman!!</h1>
+<img id ="image"src="/Users/Leslie/hangman/Hangman/assets/images/breakfastfood.jpg" align:"center">
+<h3>To begin, please enter a letter and click "Guess".</h3>
+<br />
+<div id="word"></div>
+<form id="letterGuess">
+		<input type="text" id="letter" maxlength="1" placeholder="Enter a letter . . . " onFocus="this.value=''" />
+		<button id="guessButton" onclick="return fun()">Guess</button>
+</form>
+<h3>Wrong Letters:</h3>
+<br />
+<div id="wrong"></div>
+<h3>Lives remaining:</h3> <b><span id="lives"></span></b>
+<br />
+<img id="img" src="" />
+<footer>Created By Leslie Obour (c)2016</footer>
+</head>
+</body>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) {
+		
+
+    lives = 10;
+		var wordBank = [
+			["P","A","N","C","A","K","E","S"],
+			["W","A","F","F","L","E","S"],
+			["M","U","F","F","I","N","S"],
+			["C","R","E","P","E","S"],
+			["S","C","R","A","M","B","L","E","D"],
+			["P","O","A","C","H","E","D"],
+			["E","G","G","S","B","E","N","E","D","I","C","T"],
+			["B","A","C","O","N"],
+			["S","A","U","S","A","G","E"],
+			["H","A","M"],
+				["p", "l", "a", "c", "e", "h", "o", "l", "d", "e", "r"]
+		];
+
+		//var s = (chosenWord.indexOf(guessedLetter));
+      //if (s === 0) {
+        //lives -= 1;}
+	
+
+		document.getElementById("lives").innerHTML = lives;
+		 
+
+		 random = Math.floor((Math.random() * (wordBank.length - 1)));
+		 chosenWord = wordBank[random];
+		 wordLength = new Array(chosenWord.length);
+		for (var i = 0; i < wordLength.length; i++) {
+				wordLength[i] = "_ ";
+				wordLength.toString();
+				var word = document.getElementById("word"); 
+
+			
+				 formattedWord = chosenWord.join("")
+
+				 join = Array.prototype.join.call(wordLength, " ");
+				word.innerHTML = join;
+
+				/*substitute underscores with letter if correct*/
+				fun = function() {
+						guessedLetter = document.getElementById("letter").value;
+						guessedLetter = guessedLetter.toUpperCase();
+						
+						var idx = chosenWord.indexOf(guessedLetter);
+						var index = chosenWord.indexOf(guessedLetter);
+						while (idx != -1) {
+								idx = chosenWord.indexOf(guessedLetter, idx + 1);
+								wordLength[idx] = guessedLetter;
+								wordLength[index] = guessedLetter;
+								document.getElementById("word").innerHTML = wordLength.join("");
+								var correct = true;
+								/*if there are no underscores remaining (i.e all letters have been guessed) then display a congratulatory message*/
+								debugger;
+								var udx = wordLength.indexOf("_ ");
+								console.log(wordLength);
+								console.log(udx);
+								if (udx === -1) {
+										if (confirm('Congratulations! You have won! Play another game?')) {
+			location.reload(true);									wordBank[random];
+									/*	return false;*/
+										} else {}
+										
+								};
+						};
+						/*if letter is not in word show it in used letters*/
+						if (correct != true) {
+								// 	check for previously used letters so no duplicates appear and no extra lives are lost
+								wrongfield = document.getElementById("wrong")
+								var wflength = wrongfield.childNodes.length;
+								for (var i = 0; i < wflength; i++) {
+										if (wrongfield.innerHTML.indexOf(guessedLetter) != -1 && guessedLetter.length > 0)  {
+												alert("You've already tried " + guessedLetter + "!");
+												return false;
+										}
+								}
+								guessedLetter = document.createTextNode(guessedLetter);
+
+								wrongfield.appendChild(guessedLetter);
+								var counter= lives -1 
+							
+							if (lives =0 )
+							{
+								hangman();
+if (confirm('You lose! The answer was ' + formattedWord + '. Do you want to play another game?')) {
+											location.reload(true);	wordBank[random];
+									return false;
+										} else {}
+									debugger;
+								};
+							document.getElementById('letter').value = '';
+						};
+
+						// 	stop the page from refreshing when 'guess' button is clicked				//
+return false;
+				};
+		}
+});
+</script>
+</html>
